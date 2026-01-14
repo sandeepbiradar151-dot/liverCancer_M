@@ -3,9 +3,14 @@ import cv2
 import numpy as np
 from skimage.feature import hog
 import joblib
+import os
 
-# Load the classifier
-clf = joblib.load("cancer.pkl")
+# Load the classifier from the script directory (robust to working directory)
+MODEL_PATH = os.path.join(os.path.dirname(__file__), "cancer.pkl")
+try:
+    clf = joblib.load(MODEL_PATH)
+except FileNotFoundError:
+    raise FileNotFoundError(f"Model file not found at {MODEL_PATH}. Ensure 'cancer.pkl' exists there.")
 
 
 # Function to preprocess image
