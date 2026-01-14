@@ -16,11 +16,6 @@ ENV/
 .DS_Store
 Thumbs.db
 
-# Data / model files - track with Git LFS or store externally
-*.h5
-*.pkl
-*.pt
-
 # Database files
 *.db
 
